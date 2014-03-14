@@ -1,0 +1,57 @@
+How does rails communicate with the database?  Please be thorough in discussing all the config files and pieces of rails necessary to communicate with the database.
+
+  Rails uses database.yml to find the database to use for the specific procedure (test, development, etc.).  Rails
+  uses migration files in the db/migrate folder to construct the schema of the database.  The models in the
+  app/models directory then communicate with the tables in the schema using the ActiveRecord ORM.  Your controllers
+  and views then have the ability to communicate with your database through the models through ActiveRecord.
+
+What is a resource?
+
+  A resource is your data in your program.  Each resource has a model and can have its own controller and views
+  as well.
+
+What are the standard RESTful routes for a resource?
+
+  1. New
+  2. Show
+  3. Destroy
+  4. Update (post)
+  5. Edit
+  6. Index
+  7. Create (post)
+
+What is CRUD?
+
+  CRUD stands for Create, Read, Update, and Delete.  They are the main functions required to
+  manipulate and view data.
+
+What is REST?
+
+  Rest is the way that rails implements CRUD in a high level way.  Through the HTTP verbs, the routes, and 
+  the reprsentitive functions in the controllers, Rails operates on your resources in a very efficient way.
+  I forget what it stands for.
+
+What is the difference between CRUD and REST?
+
+  CRUD is a very low level way to describe basic data maniulation functionality.  REST is a high
+  level way to implement CRUD.
+
+Describe the flow of a request from a users browser through the rails stack and back.
+
+  1. User makes an HTTP request through his/her browser.
+  2. Goes to the rails router to see where it should be routed to.
+  3. Routes to the correct controller and method.
+  4. Controller communicates with models and database.
+  5. Database returns necessary data.
+  6. Data is handed over to the views, which render HTML.
+  7. The HTML is passed back to the client's browser.
+  8. The Browser renders the HTML for the client.
+
+What are HTTP verbs?
+
+  GET, POST, PATCH, DELETE.  These are the different actions that can take place in a controller.
+
+Why do we use migrations.
+  
+  Because they create the schema of our database.  We need to create a structure for our database
+  in order for our models to communicate with our data.
