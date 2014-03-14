@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+<p>
+  Current comments:<br><br>
+  <ol>
+    <% @post.comments.reverse.each do |c| %>
+      <li><strong><%= c.title %></strong><br>
+      <%= c.content %></li><br><br>
+    <% end %>
+  </ol>
+</p>
+<p>
+  Create a new comment:
+</p>
+<form action="/comments" method="POST">
+  <label for="Title">Title</label><br>
+    <input type="string" name="comment[title]" id="title"><br>
+    <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <label for="Comment">Comment</label><br>
+    <textarea rows="4" cols="40" name="comment[content]"></textarea><br>
+  <input type="submit" value="Submit Comment">
+</form>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
